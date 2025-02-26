@@ -410,6 +410,33 @@ section > .container > p {
   to { opacity: 1; transform: translateY(0); }
 }
 
+.download-card {
+  background: rgba(2, 17, 27, 0.95);
+  border: 2px solid var(--primary-color);
+  border-radius: 25px;
+  padding: 3rem;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 247, 255, 0.2);
+  backdrop-filter: blur(10px);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.download-card h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.download-card .btn {
+  margin-top: 1.5rem;
+}
+
+footer {
+  background: rgba(2, 17, 27, 0.95);
+  border-top: 1px solid rgba(0, 247, 255, 0.2);
+  color: rgba(255, 255, 255, 0.7);
+}
+
 @media (max-width: 768px) {
   h1 {
     font-size: 2.5rem;
