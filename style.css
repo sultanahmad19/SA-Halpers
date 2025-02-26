@@ -52,11 +52,15 @@ section {
 }
 
 #hero {
-  padding: 180px 0 100px;
+  padding: 160px 0 120px;
   text-align: center;
-  background: radial-gradient(circle at center, rgba(0,247,255,0.1) 0%, transparent 70%);
+  background: radial-gradient(circle at center, rgba(0,247,255,0.15) 0%, transparent 80%);
   position: relative;
   overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #hero::before {
@@ -115,11 +119,53 @@ h1 {
   background: rgba(2, 17, 27, 0.8);
   border: 1px solid rgba(0,247,255,0.2);
   border-radius: 15px;
-  padding: 2rem;
+  padding: 2.5rem 2rem;
   text-align: center;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
   animation: fadeIn 0.5s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.row {
+  margin: 0 -1rem;
+}
+
+.col-md-3 {
+  padding: 1rem;
+}
+
+section h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2.5rem;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+section h2:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--primary-color);
+  box-shadow: 0 0 10px var(--primary-color);
+}
+
+section > .container > p {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4rem;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .service-card:hover, .step-card:hover, .contact-card:hover {
@@ -139,9 +185,30 @@ h1 {
   background: rgba(2, 17, 27, 0.9);
   border: 1px solid var(--primary-color);
   border-radius: 20px;
-  padding: 3rem;
+  padding: 4rem 3rem;
   text-align: center;
   box-shadow: 0 0 20px rgba(0, 247, 255, 0.2);
+  margin-top: 2rem;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.pricing-grid:before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background: radial-gradient(circle at center, rgba(0,247,255,0.1) 0%, transparent 70%);
+  z-index: -1;
+  border-radius: 25px;
 }
 
 .pricing-grid {
