@@ -5,6 +5,18 @@
   --dark-bg: #02111b;
   --card-bg: rgba(2, 17, 27, 0.8);
   --text-color: #ffffff;
+  --gradient-1: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+  --gradient-2: linear-gradient(135deg, var(--primary-color), #0066ff);
+}
+
+@keyframes shine {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+@keyframes borderFlow {
+  0%, 100% { border-color: var(--primary-color); }
+  50% { border-color: var(--accent-color); }
 }
 
 body {
@@ -121,10 +133,17 @@ h1 {
 }
 
 .btn-primary {
-  background-color: var(--primary-color);
+  background: var(--gradient-1);
   border: none;
   color: var(--dark-bg);
   animation: pulse 2s infinite;
+  background-size: 200% auto;
+  transition: 0.5s;
+}
+
+.btn-primary:hover {
+  background-size: 200% auto;
+  animation: shine 3s linear infinite;
 }
 
 .btn-outline-primary {
@@ -140,8 +159,9 @@ h1 {
 }
 
 .service-card, .step-card, .contact-card {
-  background: rgba(2, 17, 27, 0.8);
-  border: 1px solid rgba(0,247,255,0.2);
+  background: rgba(2, 17, 27, 0.9);
+  border: 2px solid rgba(0,247,255,0.2);
+  box-shadow: 0 5px 15px rgba(0,247,255,0.1);
   border-radius: 15px;
   padding: 2.5rem 2rem;
   text-align: center;
