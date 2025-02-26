@@ -1,16 +1,190 @@
-<!DOCTYPE html>
-<html>
 
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>replit</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SA Helpers - Your Local Delivery Superhero</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
 </head>
-
 <body>
-  Hello world
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#">SA Helpers</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#how-it-works">How It Works</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item"><a class="btn btn-primary" href="#order">Order / Register</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section id="hero" class="text-center">
+    <div class="container">
+      <h1>Your Local Delivery <span class="highlight">Superhero</span></h1>
+      <p>Fast, reliable, and eco-friendly delivery services right at your doorstep.</p>
+      <div class="cta-buttons">
+        <a href="tel:0640517162" class="btn btn-primary"><i class="fas fa-phone"></i> Call Now: 0640517162</a>
+        <a href="#whatsapp" class="btn btn-outline-primary"><i class="fab fa-whatsapp"></i> WhatsApp Order</a>
+      </div>
+      <small>Available for deliveries from 8am to 10pm</small>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <h2 class="text-center">Our Services</h2>
+      <p class="text-center">Whatever you need delivered, we're here to help, fast, reliable, and always with a smile.</p>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="service-card">
+            <i class="fas fa-box"></i>
+            <h3>Package Delivery</h3>
+            <p>Quick and safe delivery of your packages across the city</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="service-card">
+            <i class="fas fa-shopping-basket"></i>
+            <h3>Grocery Shopping</h3>
+            <p>We shop and deliver groceries from your favorite stores</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="service-card">
+            <i class="fas fa-file-alt"></i>
+            <h3>Document Courier</h3>
+            <p>Reliable delivery of your important documents</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="service-card">
+            <i class="fas fa-utensils"></i>
+            <h3>Food Delivery</h3>
+            <p>Hot and fresh food delivery from local restaurants</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how-it-works">
+    <div class="container">
+      <h2 class="text-center">How It Works</h2>
+      <p class="text-center">Getting your items delivered is as easy as 1-2-3. Here's how our service works.</p>
+      <div class="steps row">
+        <div class="col-md-3">
+          <div class="step">
+            <i class="fas fa-mobile-alt"></i>
+            <h3>Place Your Order</h3>
+            <p>Just call or WhatsApp us to schedule your delivery</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="step">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3>Provide Your Address</h3>
+            <p>Tell us your delivery location</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="step">
+            <i class="fas fa-clock"></i>
+            <h3>Get Status Updates</h3>
+            <p>We will keep you updated about your order</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="step">
+            <i class="fas fa-check-circle"></i>
+            <h3>Quick Delivery</h3>
+            <p>Receive your items at your doorstep</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="container">
+      <h2 class="text-center">Simple Pricing</h2>
+      <p class="text-center">Choose the perfect plan for your delivery needs</p>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="price-card">
+            <h3>Basic</h3>
+            <div class="price">$9.99<span>/month</span></div>
+            <ul>
+              <li>Up to 5 deliveries/month</li>
+              <li>City-wide coverage</li>
+              <li>Standard delivery</li>
+              <li>Basic tracking</li>
+            </ul>
+            <a href="#" class="btn btn-outline-primary">Get Started</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="price-card featured">
+            <h3>Pro</h3>
+            <div class="price">$19.99<span>/month</span></div>
+            <ul>
+              <li>Up to 15 deliveries/month</li>
+              <li>Priority delivery</li>
+              <li>Real-time tracking</li>
+              <li>24/7 support</li>
+            </ul>
+            <a href="#" class="btn btn-primary">Get Started</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="price-card">
+            <h3>Business</h3>
+            <div class="price">$49.99<span>/month</span></div>
+            <ul>
+              <li>Unlimited deliveries</li>
+              <li>Dedicated account manager</li>
+              <li>Custom delivery windows</li>
+              <li>API access</li>
+            </ul>
+            <a href="#" class="btn btn-outline-primary">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2 class="text-center">Contact Us</h2>
+      <p class="text-center">Ready to get started? Contact us through any of these channels.</p>
+      <div class="row justify-content-center">
+        <div class="col-md-3">
+          <a href="tel:0640517162" class="contact-card">
+            <i class="fas fa-phone"></i>
+            <span>Call Us</span>
+            <p>0640517162</p>
+          </a>
+        </div>
+        <div class="col-md-3">
+          <a href="#whatsapp" class="contact-card">
+            <i class="fab fa-whatsapp"></i>
+            <span>WhatsApp</span>
+            <p>0640517162</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="script.js"></script>
 </body>
-
 </html>

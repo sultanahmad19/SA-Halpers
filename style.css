@@ -1,4 +1,135 @@
-html {
-  height: 100%;
-  width: 100%;
+
+:root {
+  --primary-color: #00b3b3;
+  --dark-bg: #0a0a1a;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --text-color: #ffffff;
+}
+
+body {
+  background: linear-gradient(135deg, var(--dark-bg), #1a1a3a);
+  color: var(--text-color);
+  font-family: 'Arial', sans-serif;
+}
+
+.navbar {
+  background: transparent;
+  padding: 1rem 0;
+}
+
+.navbar-brand {
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+.nav-link {
+  color: var(--text-color);
+  margin: 0 1rem;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-outline-primary {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+#hero {
+  padding: 100px 0;
+  background: radial-gradient(circle at top right, rgba(0, 179, 179, 0.1), transparent);
+}
+
+.highlight {
+  color: var(--primary-color);
+}
+
+.cta-buttons {
+  margin: 2rem 0;
+}
+
+.cta-buttons .btn {
+  margin: 0 0.5rem;
+}
+
+section {
+  padding: 80px 0;
+}
+
+.service-card, .step, .price-card, .contact-card {
+  background: var(--card-bg);
+  border-radius: 10px;
+  padding: 2rem;
+  margin: 1rem 0;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover, .step:hover, .contact-card:hover {
+  transform: translateY(-5px);
+}
+
+.service-card i, .step i {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.price-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.price-card.featured {
+  border: 2px solid var(--primary-color);
+}
+
+.price {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+
+.price span {
+  font-size: 1rem;
+  opacity: 0.7;
+}
+
+.price-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+}
+
+.price-card ul li {
+  margin: 0.5rem 0;
+}
+
+.contact-card {
+  display: block;
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.contact-card i {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .navbar-collapse {
+    background: rgba(10, 10, 26, 0.9);
+    padding: 1rem;
+    border-radius: 10px;
+  }
+  
+  .cta-buttons .btn {
+    margin: 0.5rem;
+    display: block;
+    width: 100%;
+  }
 }
