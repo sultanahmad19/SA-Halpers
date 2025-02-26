@@ -10,6 +10,30 @@
 body {
   background: linear-gradient(135deg, #02111b, #0a192f);
   color: var(--text-color);
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(90deg, var(--dark-bg) 21px, transparent 1%) center,
+    linear-gradient(var(--dark-bg) 21px, transparent 1%) center,
+    rgba(0, 247, 255, 0.1);
+  background-size: 22px 22px;
+  animation: backgroundMove 30s linear infinite;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+@keyframes backgroundMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 44px 44px; }
+}
   font-family: 'Arial', sans-serif;
   min-height: 100vh;
   margin: 0;
