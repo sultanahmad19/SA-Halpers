@@ -342,6 +342,46 @@ section > .container > p {
   animation: float 3s infinite;
 }
 
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 8px 20px;
+  border: 2px solid var(--primary-color);
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+  background: var(--gradient-1);
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  color: var(--dark-bg);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 247, 255, 0.3);
+}
+
+.contact-link i {
+  font-size: 1rem;
+  margin: 0;
+  animation: none;
+}
+
+.contact-link:hover i {
+  animation: slideRight 1s infinite;
+}
+
+@keyframes slideRight {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(5px); }
+}
+
 .pricing-card {
   background: rgba(2, 17, 27, 0.95);
   border: 2px solid var(--primary-color);
