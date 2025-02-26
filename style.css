@@ -34,13 +34,16 @@
 }
 
 :root {
-  --primary-color: #00E6E6;
-  --dark-bg: #0A0A1A;
-  --card-bg: rgba(13, 19, 33, 0.8);
+  --primary-color: #00ff99;
+  --dark-bg: #0a0a1a;
+  --card-bg: rgba(10, 10, 26, 0.8);
   --text-color: #ffffff;
-  --gradient-start: #0D1321;
-  --gradient-end: #0A0A1A;
-  --accent-color: #FF3366;
+  --gradient-start: #120458;
+  --gradient-end: #000000;
+  --accent-color: #ff00ff;
+  --neon-glow: 0 0 10px var(--primary-color),
+               0 0 20px var(--primary-color),
+               0 0 30px var(--primary-color);
 }
 
 body {
@@ -48,6 +51,18 @@ body {
   color: var(--text-color);
   font-family: 'Arial', sans-serif;
   min-height: 100vh;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 255, 153, 0.1), transparent 70%);
+  pointer-events: none;
 }
 
 .navbar {
@@ -112,7 +127,8 @@ section {
 .service-card:hover, .step:hover, .contact-card:hover {
   transform: translateY(-10px);
   border-color: var(--primary-color);
-  box-shadow: 0 0 20px rgba(0, 230, 230, 0.2);
+  box-shadow: var(--neon-glow);
+  background: rgba(10, 10, 26, 0.9);
 }
 
 .service-card i, .step i {
