@@ -235,6 +235,8 @@ h1 {
   filter: drop-shadow(0 0 10px var(--primary-color));
   transition: all 0.3s ease;
   display: block;
+  max-width: 100%;
+  object-fit: contain;
 }
 
 .navbar-brand:hover .navbar-logo {
