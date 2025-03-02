@@ -106,13 +106,18 @@ h1 {
   display: flex;
   align-items: center;
   padding: 5px;
+  background: transparent;
+  border: none;
 }
 
 .navbar-logo {
-  height: 70px;
+  height: 100px;
   width: auto;
   display: block;
   object-fit: contain;
+  filter: none;
+  box-shadow: none;
+  transition: opacity 0.3s ease;
 }
 
 .navbar-brand:hover .navbar-logo {
