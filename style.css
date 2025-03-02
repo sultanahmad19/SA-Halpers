@@ -252,16 +252,20 @@ section > .container > h2 {
 }
 
 .navbar-brand {
-  background: linear-gradient(45deg, var(--primary-color), #fff, var(--primary-color));
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent !important;
-  font-weight: bold;
-  font-size: 1.8rem;
-  text-shadow: 0 0 10px var(--primary-color);
-  animation: shine 3s linear infinite;
   position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo {
+  height: 50px;
+  filter: drop-shadow(0 0 10px var(--primary-color));
+  transition: all 0.3s ease;
+}
+
+.navbar-brand:hover .navbar-logo {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 15px var(--primary-color));
 }
 
 .navbar-brand::after {
