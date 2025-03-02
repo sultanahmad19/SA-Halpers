@@ -248,23 +248,7 @@ h1 {
   /* filter: drop-shadow(0 0 15px var(--primary-color)); */
 }
 
-.navbar-brand::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  bottom: -5px;
-  left: 0;
-  background: var(--primary-color);
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.5s ease;
-}
-
-.navbar-brand:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
-}
+/* Removed underline effect */
 
 .nav-link {
   color: var(--text-color) !important;
