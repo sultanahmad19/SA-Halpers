@@ -53,6 +53,19 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   // Add click event to close buttons
+
+// Logo error handling
+document.addEventListener('DOMContentLoaded', function() {
+  const logo = document.querySelector('.navbar-logo');
+  if (logo) {
+    logo.onerror = function() {
+      console.error('Logo failed to load:', this.src);
+      // Try alternative logo as fallback
+      this.src = './attached_assets/SAH.png';
+    };
+  }
+});
+
   closeButtons.forEach(button => {
     button.addEventListener('click', closeAllModals);
   });
