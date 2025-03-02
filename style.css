@@ -237,6 +237,9 @@ h1 {
   transition: all 0.3s ease;
   display: block;
   object-fit: contain;
+  background-color: transparent;
+  z-index: 1001;
+  position: relative;
 }
 
 .navbar-brand:hover .navbar-logo {
