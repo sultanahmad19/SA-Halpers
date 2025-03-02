@@ -288,68 +288,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Call the animate counters function when DOM is loaded
   document.addEventListener('DOMContentLoaded', animateCounters);
   
-  // Testimonial Slider
-  const initTestimonialSlider = () => {
-    const testimonialCards = document.querySelectorAll('.testimonial-card');
-    const dots = document.querySelectorAll('.testimonial-dot');
-    let currentIndex = 0;
-    
-    // Function to show specific slide
-    const showSlide = (index) => {
-      // Hide all slides
-      testimonialCards.forEach(card => {
-        card.style.display = 'none';
-        card.classList.remove('active');
-      });
-      
-      // Remove active class from all dots
-      dots.forEach(dot => {
-        dot.classList.remove('active');
-      });
-      
-      // Show current slide and make current dot active
-      testimonialCards[index].style.display = 'block';
-      testimonialCards[index].classList.add('active');
-      dots[index].classList.add('active');
-      
-      // Add entrance animation
-      testimonialCards[index].style.animation = 'fadeIn 0.5s ease forwards';
-    };
-    
-    // Add click event to all dots
-    dots.forEach(dot => {
-      dot.addEventListener('click', () => {
-        currentIndex = parseInt(dot.getAttribute('data-index'));
-        showSlide(currentIndex);
-      });
-    });
-    
-    // Auto change slide every 5 seconds
-    const autoSlide = () => {
-      currentIndex = (currentIndex + 1) % testimonialCards.length;
-      showSlide(currentIndex);
-    };
-    
-    // Start auto sliding
-    let slideInterval = setInterval(autoSlide, 5000);
-    
-    // Pause auto sliding when hovering over slider
-    const slider = document.querySelector('.testimonial-slider');
-    slider.addEventListener('mouseenter', () => {
-      clearInterval(slideInterval);
-    });
-    
-    // Resume auto sliding when mouse leaves slider
-    slider.addEventListener('mouseleave', () => {
-      slideInterval = setInterval(autoSlide, 5000);
-    });
-    
-    // Show first slide initially
-    showSlide(0);
-  };
-  
-  // Initialize testimonial slider
-  document.addEventListener('DOMContentLoaded', initTestimonialSlider);
+  // Testimonial slider functionality removed
   
   // Interactive card 3D effect for mobile
   const handleInteractiveCards = () => {
