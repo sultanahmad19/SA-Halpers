@@ -1,4 +1,3 @@
-
 :root {
   --primary-color: #00f7ff;
   --accent-color: #ff00ff;
@@ -231,7 +230,7 @@ h1 {
 }
 
 .navbar-logo {
-  height: 50px;
+  height: 120px;
   width: auto;
   filter: drop-shadow(0 0 10px var(--primary-color));
   transition: all 0.3s ease;
