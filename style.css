@@ -41,6 +41,18 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* Scroll reveal animation classes */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @keyframes borderGlow {
   0% { box-shadow: 0 0 5px var(--primary-color); }
   50% { box-shadow: 0 0 20px var(--primary-color); }

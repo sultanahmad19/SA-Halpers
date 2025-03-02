@@ -111,25 +111,35 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Scroll reveal animation
-const scrollElements = document.querySelectorAll("[data-scroll]");
-
-const elementInView = (el) => {
-  const elementTop = el.getBoundingClientRect().top;
-  return elementTop <= (window.innerHeight || document.documentElement.clientHeight) * 0.8;
-};
-
-const displayScrollElement = (element) => {
-  element.classList.add("scroll-visible");
-};
-
-const handleScrollAnimation = () => {
-  scrollElements.forEach((el) => {
-    if (elementInView(el)) {
-      displayScrollElement(el);
-    }
+document.addEventListener('DOMContentLoaded', function() {
+  // Select all sections and other elements to animate
+  const revealElements = document.querySelectorAll('section, .service-card, .step-card, .contact-card, .special-service-card, .pricing-card');
+  
+  // Add the scroll-reveal class to all elements
+  revealElements.forEach(el => {
+    el.classList.add('scroll-reveal');
   });
-};
-
-// Event listeners for scroll animations
-window.addEventListener('scroll', handleScrollAnimation);
-window.addEventListener('load', handleScrollAnimation);
+  
+  // Function to check if element is in viewport
+  const isInViewport = (el) => {
+    const rect = el.getBoundingClientRect();
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    // Element is considered in viewport when its top reaches 80% of the viewport height
+    return rect.top <= windowHeight * 0.8;
+  };
+  
+  // Function to handle scroll animation
+  const handleScrollAnimation = () => {
+    revealElements.forEach(el => {
+      if (isInViewport(el) && !el.classList.contains('revealed')) {
+        el.classList.add('revealed');
+      }
+    });
+  };
+  
+  // Check elements visibility on load and scroll
+  window.addEventListener('scroll', handleScrollAnimation);
+  window.addEventListener('load', handleScrollAnimation);
+  // Also trigger once after a short delay to catch any elements already in view
+  setTimeout(handleScrollAnimation, 100);
+});
