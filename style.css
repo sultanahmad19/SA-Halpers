@@ -170,6 +170,42 @@ section:first-of-type {
   margin-top: 2px;
 }
 
+.main-service-details ul li.price-highlight {
+  background: linear-gradient(90deg, rgba(0, 247, 255, 0.15), rgba(255, 0, 255, 0.15));
+  padding: 12px 15px;
+  border-radius: 15px;
+  margin: 15px 0;
+  border: 2px solid var(--primary-color);
+  box-shadow: 0 0 20px rgba(0, 247, 255, 0.3);
+  transform: scale(1.05);
+  animation: pulsate 2s infinite;
+}
+
+.main-service-details ul li.price-highlight i {
+  color: #FFD700;
+  font-size: 1.4rem;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+}
+
+.price-text {
+  font-weight: bold;
+  font-size: 1.15rem;
+  color: #fff;
+  text-shadow: 0 0 8px var(--primary-color);
+  letter-spacing: 0.5px;
+}
+
+@keyframes pulsate {
+  0%, 100% { 
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 247, 255, 0.3);
+  }
+  50% { 
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(0, 247, 255, 0.5), 0 0 40px rgba(255, 0, 255, 0.2);
+  }
+}
+
 @media (max-width: 991px) {
   .main-service-content {
     flex-direction: column;
@@ -723,11 +759,24 @@ section > .container > p {
   right: 0;
   height: 100%;
   background: 
-    radial-gradient(circle at 50% 0%, rgba(0, 247, 255, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 100% 100%, rgba(255, 0, 255, 0.1) 0%, transparent 50%);
+    radial-gradient(circle at 50% 0%, rgba(0, 247, 255, 0.25) 0%, transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(255, 0, 255, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 0% 80%, rgba(255, 215, 0, 0.15) 0%, transparent 40%);
   z-index: -1;
   border-radius: 15px;
   pointer-events: none;
+  animation: backgroundPulse 8s infinite alternate;
+}
+
+@keyframes backgroundPulse {
+  0% {
+    background-position: 0% 0%, 100% 100%, 0% 80%;
+    opacity: 0.7;
+  }
+  100% {
+    background-position: 10% 10%, 90% 90%, 10% 70%;
+    opacity: 1;
+  }
 }
 
 @keyframes modalSlideIn {
@@ -805,10 +854,33 @@ section > .container > p {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: linear-gradient(60deg, transparent, rgba(0, 247, 255, 0.1), transparent);
+  background: linear-gradient(60deg, 
+    transparent, 
+    rgba(0, 247, 255, 0.15), 
+    rgba(255, 0, 255, 0.1),
+    transparent);
   transform: rotate(30deg);
-  animation: shimmerEffect 3s infinite;
+  animation: shimmerEffect 6s infinite;
   pointer-events: none;
+}
+
+.package::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 247, 255, 0.1) 0%, transparent 70%);
+  z-index: -1;
+  border-radius: 10px;
+  pointer-events: none;
+  animation: pulseLight 4s infinite alternate;
+}
+
+@keyframes pulseLight {
+  0% { opacity: 0.5; }
+  100% { opacity: 1; }
 }
 
 @keyframes shimmerEffect {
@@ -817,9 +889,14 @@ section > .container > p {
 }
 
 .package:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px) scale(1.03);
   border-color: var(--primary-color);
-  box-shadow: 0 0 20px rgba(0, 247, 255, 0.2);
+  box-shadow: 
+    0 10px 30px rgba(0, 247, 255, 0.3),
+    0 0 20px rgba(0, 247, 255, 0.2),
+    inset 0 0 15px rgba(0, 247, 255, 0.1);
+  background: linear-gradient(135deg, rgba(0, 247, 255, 0.08), rgba(255, 0, 255, 0.05));
+  z-index: 1;
 }
 
 .package h4 {
