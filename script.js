@@ -1,5 +1,5 @@
 
-// Smooth scroll
+// Smooth scroll functionality
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     const href = this.getAttribute('href');
@@ -17,45 +17,51 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Service Modal Functionality
 document.addEventListener('DOMContentLoaded', function() {
-  // Get all service detail buttons
+  // Get modal elements
+  const modalContainers = {
+    solar: document.getElementById('solarModal'),
+    car: document.getElementById('carModal'),
+    tank: document.getElementById('tankModal')
+  };
+  
+  // Get all service detail buttons and close buttons
   const serviceButtons = document.querySelectorAll('.service-details-btn');
-  
-  // Get all modals
-  const solarModal = document.getElementById('solarModal');
-  const carModal = document.getElementById('carModal');
-  const tankModal = document.getElementById('tankModal');
-  
-  // Get all close buttons
   const closeButtons = document.querySelectorAll('.modal-close-btn');
+  
+  // Function to close all modals
+  function closeAllModals() {
+    Object.values(modalContainers).forEach(modal => {
+      if (modal) modal.style.display = 'none';
+    });
+    
+    // Restore body scrolling
+    document.body.style.overflow = '';
+  }
   
   // Add click event to service buttons
   serviceButtons.forEach(button => {
     button.addEventListener('click', function() {
       const service = this.getAttribute('data-service');
+      const targetModal = modalContainers[service];
       
-      if (service === 'solar') {
-        solarModal.style.display = 'flex';
-      } else if (service === 'car') {
-        carModal.style.display = 'flex';
-      } else if (service === 'tank') {
-        tankModal.style.display = 'flex';
+      if (targetModal) {
+        targetModal.style.display = 'flex';
+        // Prevent body scrolling when modal is open
+        document.body.style.overflow = 'hidden';
       }
-      
-      // Prevent body scrolling when modal is open
-      document.body.style.overflow = 'hidden';
     });
   });
   
   // Add click event to close buttons
   closeButtons.forEach(button => {
-    button.addEventListener('click', closeModal);
+    button.addEventListener('click', closeAllModals);
   });
   
   // Close modal when clicking outside
   document.querySelectorAll('.service-modal-container').forEach(modal => {
     modal.addEventListener('click', function(e) {
       if (e.target === this) {
-        closeModal();
+        closeAllModals();
       }
     });
   });
@@ -63,19 +69,9 @@ document.addEventListener('DOMContentLoaded', function() {
   // Close modal with escape key
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
-      closeModal();
+      closeAllModals();
     }
   });
-  
-  // Function to close all modals
-  function closeModal() {
-    solarModal.style.display = 'none';
-    carModal.style.display = 'none';
-    tankModal.style.display = 'none';
-    
-    // Restore body scrolling
-    document.body.style.overflow = '';
-  }
 });
 
 // Scroll reveal animation
@@ -98,5 +94,6 @@ const handleScrollAnimation = () => {
   });
 };
 
+// Event listeners for scroll animations
 window.addEventListener('scroll', handleScrollAnimation);
 window.addEventListener('load', handleScrollAnimation);
