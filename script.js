@@ -236,4 +236,180 @@ document.addEventListener('DOMContentLoaded', function() {
       el.style.opacity = opacity;
     });
   });
+  
+  // Stats Counter Animation
+  const animateCounters = () => {
+    const statItems = document.querySelectorAll('.stat-item');
+    
+    statItems.forEach(item => {
+      const targetNumber = parseInt(item.getAttribute('data-count'));
+      const numberElement = item.querySelector('.stat-number');
+      let currentNumber = 0;
+      
+      // Get duration based on target number (bigger numbers animate longer)
+      const duration = Math.min(2000, Math.max(1000, targetNumber * 0.5));
+      const increment = targetNumber / (duration / 16); // 60fps
+      
+      const updateCounter = () => {
+        if (currentNumber < targetNumber) {
+          // For percentage, we need decimal precision
+          if (targetNumber <= 100 && targetNumber > 0) {
+            currentNumber += increment;
+            numberElement.textContent = Math.min(Math.round(currentNumber * 10) / 10, targetNumber);
+            
+            if (targetNumber <= 100 && item.querySelector('.stat-label').textContent.includes('Rate')) {
+              numberElement.textContent += '%';
+            }
+          } else {
+            currentNumber += increment;
+            numberElement.textContent = Math.min(Math.round(currentNumber), targetNumber).toLocaleString();
+          }
+          
+          if (currentNumber < targetNumber) {
+            requestAnimationFrame(updateCounter);
+          }
+        }
+      };
+      
+      // Start counter animation when element is in viewport
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            updateCounter();
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      
+      observer.observe(item);
+    });
+  };
+  
+  // Call the animate counters function when DOM is loaded
+  document.addEventListener('DOMContentLoaded', animateCounters);
+  
+  // Testimonial Slider
+  const initTestimonialSlider = () => {
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+    const dots = document.querySelectorAll('.testimonial-dot');
+    let currentIndex = 0;
+    
+    // Function to show specific slide
+    const showSlide = (index) => {
+      // Hide all slides
+      testimonialCards.forEach(card => {
+        card.style.display = 'none';
+        card.classList.remove('active');
+      });
+      
+      // Remove active class from all dots
+      dots.forEach(dot => {
+        dot.classList.remove('active');
+      });
+      
+      // Show current slide and make current dot active
+      testimonialCards[index].style.display = 'block';
+      testimonialCards[index].classList.add('active');
+      dots[index].classList.add('active');
+      
+      // Add entrance animation
+      testimonialCards[index].style.animation = 'fadeIn 0.5s ease forwards';
+    };
+    
+    // Add click event to all dots
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        currentIndex = parseInt(dot.getAttribute('data-index'));
+        showSlide(currentIndex);
+      });
+    });
+    
+    // Auto change slide every 5 seconds
+    const autoSlide = () => {
+      currentIndex = (currentIndex + 1) % testimonialCards.length;
+      showSlide(currentIndex);
+    };
+    
+    // Start auto sliding
+    let slideInterval = setInterval(autoSlide, 5000);
+    
+    // Pause auto sliding when hovering over slider
+    const slider = document.querySelector('.testimonial-slider');
+    slider.addEventListener('mouseenter', () => {
+      clearInterval(slideInterval);
+    });
+    
+    // Resume auto sliding when mouse leaves slider
+    slider.addEventListener('mouseleave', () => {
+      slideInterval = setInterval(autoSlide, 5000);
+    });
+    
+    // Show first slide initially
+    showSlide(0);
+  };
+  
+  // Initialize testimonial slider
+  document.addEventListener('DOMContentLoaded', initTestimonialSlider);
+  
+  // Interactive card 3D effect for mobile
+  const handleInteractiveCards = () => {
+    const cards = document.querySelectorAll('.interactive-card');
+    
+    // Check if device supports hover
+    const supportsHover = window.matchMedia('(hover: hover)').matches;
+    
+    if (!supportsHover) {
+      // For touch devices, we'll use click to flip
+      cards.forEach(card => {
+        card.addEventListener('click', () => {
+          card.classList.toggle('flipped');
+          
+          // Reset other cards
+          cards.forEach(otherCard => {
+            if (otherCard !== card) {
+              otherCard.classList.remove('flipped');
+            }
+          });
+        });
+      });
+    }
+  };
+  
+  document.addEventListener('DOMContentLoaded', handleInteractiveCards);
+  
+  // Advanced floating animations for elements
+  const initAdvancedAnimations = () => {
+    // Get elements with fancy animations
+    document.querySelectorAll('.stat-icon, .interactive-card-icon').forEach((el, index) => {
+      // Add different animation delays
+      el.style.animationDelay = `${index * 0.2}s`;
+    });
+    
+    // Animated typing effect reset for infinite animation
+    const restartTypewriterAnimation = () => {
+      const typingElements = document.querySelectorAll('.typing-text');
+      
+      typingElements.forEach(element => {
+        // Clone and replace to restart animation
+        const newElement = element.cloneNode(true);
+        element.parentNode.replaceChild(newElement, element);
+      });
+    };
+    
+    // Restart typing animation when scrolled into view
+    const observeTypewriter = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          restartTypewriterAnimation();
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    const typewriterSection = document.querySelector('.animated-text-section');
+    if (typewriterSection) {
+      observeTypewriter.observe(typewriterSection);
+    }
+  };
+  
+  document.addEventListener('DOMContentLoaded', initAdvancedAnimations);
 });
