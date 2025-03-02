@@ -236,7 +236,7 @@ h1 {
 }
 
 .navbar-logo {
-  height: 70px;
+  height: 100px;
   width: auto;
   filter: drop-shadow(0 0 10px var(--primary-color));
   transition: all 0.3s ease;
@@ -244,8 +244,8 @@ h1 {
 }
 
 .navbar-brand:hover .navbar-logo {
-  transform: scale(1.05);
-  filter: drop-shadow(0 0 15px var(--primary-color));
+  transform: scale(2.00);
+  /* filter: drop-shadow(0 0 15px var(--primary-color)); */
 }
 
 .navbar-brand::after {
