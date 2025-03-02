@@ -110,36 +110,130 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// Scroll reveal animation
+// Enhanced scroll reveal animation with multiple effects
 document.addEventListener('DOMContentLoaded', function() {
-  // Select all sections and other elements to animate
-  const revealElements = document.querySelectorAll('section, .service-card, .step-card, .contact-card, .special-service-card, .pricing-card');
+  // Apply different animation classes to different elements
   
-  // Add the scroll-reveal class to all elements
-  revealElements.forEach(el => {
-    el.classList.add('scroll-reveal');
+  // Section titles get zoom-in effect
+  document.querySelectorAll('section > .container > h2').forEach((el, index) => {
+    el.classList.add('zoom-in');
+    el.classList.add(`reveal-delay-${index % 4 + 1}`);
   });
   
-  // Function to check if element is in viewport
-  const isInViewport = (el) => {
+  // Service cards get alternating left/right animations
+  document.querySelectorAll('.service-card').forEach((el, index) => {
+    if (index % 2 === 0) {
+      el.classList.add('fade-in-left');
+    } else {
+      el.classList.add('fade-in-right');
+    }
+    el.classList.add(`reveal-delay-${index % 4 + 1}`);
+  });
+  
+  // Step cards get staggered bottom fade-in
+  document.querySelectorAll('.step-card').forEach((el, index) => {
+    el.classList.add('fade-in-bottom');
+    el.classList.add(`reveal-delay-${index % 4 + 1}`);
+  });
+  
+  // Special service cards get rotate-in effect
+  document.querySelectorAll('.special-service-card').forEach((el, index) => {
+    el.classList.add('rotate-in');
+    el.classList.add(`reveal-delay-${index % 3 + 1}`);
+  });
+  
+  // Contact cards get zoom-in effect
+  document.querySelectorAll('.contact-card').forEach((el, index) => {
+    el.classList.add('zoom-in');
+    el.classList.add(`reveal-delay-${index % 2 + 1}`);
+  });
+  
+  // Pricing items get staggered fade in
+  document.querySelectorAll('.pricing-item').forEach((el, index) => {
+    el.classList.add('fade-in-bottom');
+    el.classList.add(`reveal-delay-${index + 1}`);
+  });
+  
+  // Main service content gets a special left entrance
+  document.querySelectorAll('.main-service-content').forEach(el => {
+    el.classList.add('fade-in-left');
+  });
+  
+  // Hero content gets zoom in
+  document.querySelectorAll('#hero .container > *').forEach((el, index) => {
+    el.classList.add('zoom-in');
+    el.classList.add(`reveal-delay-${index % 4 + 1}`);
+  });
+  
+  // Get all elements with animation classes
+  const animatedElements = document.querySelectorAll('.fade-in-left, .fade-in-right, .fade-in-bottom, .zoom-in, .rotate-in, .scroll-reveal');
+  
+  // Function to check if element is in viewport with threshold
+  const isInViewport = (el, threshold = 0.15) => {
     const rect = el.getBoundingClientRect();
     const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-    // Element is considered in viewport when its top reaches 80% of the viewport height
-    return rect.top <= windowHeight * 0.8;
+    // Element is considered in viewport when its top edge reaches the threshold percentage down the viewport
+    return rect.top <= windowHeight * (1 - threshold);
   };
   
-  // Function to handle scroll animation
+  // Function to handle scroll animation with additional checks
   const handleScrollAnimation = () => {
-    revealElements.forEach(el => {
+    animatedElements.forEach(el => {
       if (isInViewport(el) && !el.classList.contains('revealed')) {
-        el.classList.add('revealed');
+        // Add small random delay for more natural feel (0-100ms)
+        setTimeout(() => {
+          el.classList.add('revealed');
+        }, Math.random() * 100);
       }
     });
   };
   
-  // Check elements visibility on load and scroll
-  window.addEventListener('scroll', handleScrollAnimation);
+  // Check elements visibility on scroll with throttling for performance
+  let scrollTimeout;
+  window.addEventListener('scroll', () => {
+    if (!scrollTimeout) {
+      scrollTimeout = setTimeout(() => {
+        handleScrollAnimation();
+        scrollTimeout = null;
+      }, 10); // Small throttle for smooth performance
+    }
+  });
+  
+  // Check on load and resize
   window.addEventListener('load', handleScrollAnimation);
-  // Also trigger once after a short delay to catch any elements already in view
+  window.addEventListener('resize', handleScrollAnimation);
+  
+  // Initial check after a short delay to catch elements already in view
   setTimeout(handleScrollAnimation, 100);
+  
+  // Additional check after images and other resources load
+  window.addEventListener('load', () => {
+    setTimeout(handleScrollAnimation, 500);
+  });
+  
+  // Parallax effect on scroll
+  const parallaxElements = document.querySelectorAll('.parallax-element');
+  const parallaxFactor = 0.1;
+  
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    
+    parallaxElements.forEach((el, index) => {
+      // Create different movement patterns for each element
+      const factor = parallaxFactor * (index + 1) * (index % 2 === 0 ? 1 : -1);
+      const yOffset = scrollY * factor;
+      const rotation = scrollY * 0.02 * (index % 2 === 0 ? 1 : -1);
+      
+      el.style.transform = `translate3d(0, ${yOffset}px, 0) rotate(${rotation}deg)`;
+      
+      // Also adjust opacity slightly based on scroll position
+      const opacityBase = 0.15;
+      const opacityFactor = 0.0001;
+      let opacity = opacityBase + Math.sin(scrollY * opacityFactor) * 0.1;
+      
+      // Keep opacity within bounds
+      opacity = Math.max(0.05, Math.min(0.25, opacity));
+      el.style.opacity = opacity;
+    });
+  });
 });
