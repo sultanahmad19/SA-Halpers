@@ -1216,6 +1216,24 @@ left: 0;
   font-weight: bold;
 }
 
+/* Make typing animation responsive on mobile */
+@media (max-width: 767px) {
+  .typing-text {
+    font-size: 1.8rem;
+    white-space: normal;
+    display: block;
+    animation: blinkCursor 0.7s step-end infinite;
+  }
+  
+  .animated-text-section {
+    padding: 50px 0;
+  }
+  
+  .typing-container {
+    width: 90%;
+  }
+}
+
 /* Interactive Features Section */
 .interactive-features {
   padding: 80px 0;
