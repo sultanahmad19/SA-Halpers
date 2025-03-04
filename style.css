@@ -1008,6 +1008,28 @@ h1 {
   pointer-events: none;
 }
 
+.pricing-note {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(0, 247, 255, 0.05);
+  border-radius: 10px;
+  border-left: 3px solid var(--primary-color);
+}
+
+.pricing-note p {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.mt-3 {
+  margin-top: 1.5rem;
+}
+
+.mt-4 {
+  margin-top: 2rem;
+}
+
 .package::before {
   content: '';
   position: absolute;
