@@ -30,9 +30,9 @@
         <span class="bar"></span>
       </button>
       <div class="ms-auto">
-        <a href="#services" class="nav-link ">Services</a>
-        <a href="#how-it-works" class="nav-link ">How It Works</a>
-        <a href="#contact" class="nav-link ">Contact</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#how-it-works" class="nav-link">How It Works</a>
+        <a href="#contact" class="nav-link">Contact</a>
       </div>
     </div>
   </nav>
@@ -206,20 +206,32 @@
         </div>
         <div class="col-md-4">
           <div class="special-service-card">
-            <div class="service-image" style="background-image: url('attached_assets/download (2).jpg')"></div>
+            <div class="service-image" style="background-image: url('./attached_assets/download (2).jpg')"></div>
             <h3>Car Washing</h3>
             <p>Professional car washing service at your doorstep with premium cleaning products</p>
             <button class="btn btn-primary service-details-btn" data-service="car">More Details</button>
           </div>
         </div>
+
         <div class="col-md-4">
           <div class="special-service-card">
-            <div class="service-image" style="background-image: url('attached_assets/download (1).jpg')"></div>
+            <div class="service-image" style="background-image: url('./attached_assets/ac-cleaning.jpg')"></div>
+            <h3>AC Cleaning</h3>
+            <p>Professional AC maintenance and cleaning service for optimal performance</p>
+            <button class="btn btn-primary service-details-btn" data-service="ac">More Details</button>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="special-service-card">
+            <div class="service-image" style="background-image: url('./attached_assets/download (1).jpg')"></div>
             <h3>Water Tank Cleaning</h3>
             <p>Professional cleaning of water tanks ensuring hygiene and safety</p>
             <button class="btn btn-primary service-details-btn" data-service="tank">More Details</button>
           </div>
         </div>
+        
+       
       </div>
     </div>
   </section>
@@ -385,6 +397,37 @@
       </div>
     </div>
   </div>
+  
+  <div class="service-modal-container" id="acModal">
+    <div class="service-modal">
+      <div class="service-modal-header">
+        <h3>AC Cleaning Service</h3>
+        <button class="modal-close-btn">&times;</button>
+      </div>
+      <div class="service-modal-body">
+        <p>Keep your air conditioner running efficiently and improve indoor air quality with our professional AC cleaning service.</p>
+        
+        <div class="package-container">
+          <div class="package">
+            <h4>AC Cleaning Service 🌀</h4>
+            <ul>
+              <li>Flat Rate:</li>
+              <li>Indoor Unit Cleaning: 1,500 PKR</li>
+              <li>(Includes: Filter wash, coil sanitization, drainage check, and dust removal.)</li>
+              <li>Outdoor Unit Cleaning: +500 PKR</li>
+              <li>(Includes: Condenser cleaning, debris removal, and performance check.)</li>
+            </ul>
+            <div class="package-price">Total for Indoor + Outdoor Cleaning: 2,000 PKR</div>
+          </div>
+        </div>
+        <div class="pricing-note mt-3">
+          <p>* For optimal cooling efficiency, we recommend cleaning your AC unit every 3-6 months.</p>
+          <p>* Additional charges may apply for units with extensive dust buildup or in hard-to-reach locations.</p>
+          <p>* Urgent Slots: "Need same-day service? +200 PKR emergency charge."</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Contact Section -->
   <section id="contact">
@@ -526,13 +569,7 @@
         </a>
       </div>
       
-      <div class="download-card mt-4">
-        <h3> We Use This Appliction To Track Distance</h3>
-        <p>We use a specialized application to track distance and ensure timely deliveries</p>
-        <a href="https://sultanahmad19.github.io/DistanceTracker/" target="_blank" class="btn btn-primary">
-          <i class="fas fa-map-marker-alt"></i> Open Tracking App
-        </a>
-      </div>
+      <!-- Tracking application card removed -->
     </div>
   </section>
 
