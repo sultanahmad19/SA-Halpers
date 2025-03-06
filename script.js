@@ -46,7 +46,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const modalContainers = {
     solar: document.getElementById('solarModal'),
     car: document.getElementById('carModal'),
-    tank: document.getElementById('tankModal')
+    tank: document.getElementById('tankModal'),
+    ac: document.getElementById('acModal')
   };
 
   // Get all service detail buttons and close buttons
@@ -79,8 +80,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Add click event to close buttons
 
-// Logo error handling
+// Logo and images error handling
 document.addEventListener('DOMContentLoaded', function() {
+  // Logo error handling
   const logo = document.querySelector('.navbar-logo');
   if (logo) {
     logo.onerror = function() {
@@ -88,6 +90,85 @@ document.addEventListener('DOMContentLoaded', function() {
       // Try alternative logo as fallback
       this.src = './attached_assets/SAH.png';
     };
+  }
+  
+  // Fix all special service card images
+  const serviceCards = document.querySelectorAll('.special-service-card .service-image');
+  serviceCards.forEach((cardImage, index) => {
+    // Extract the current background image URL
+    const style = window.getComputedStyle(cardImage);
+    const bgImage = style.backgroundImage;
+    
+    // If the background image contains a URL, test if it loads
+    if (bgImage && bgImage !== 'none') {
+      const urlMatch = bgImage.match(/url\(['"]?(.*?)['"]?\)/);
+      if (urlMatch && urlMatch[1]) {
+        const imageUrl = urlMatch[1];
+        
+        const img = new Image();
+        img.onload = function() {
+          console.log('Image loaded successfully:', imageUrl);
+        };
+        img.onerror = function() {
+          console.error('Image failed to load:', imageUrl);
+          
+          // Apply fallback images based on card index
+          let fallbackUrl;
+          if (index === 0) {
+            fallbackUrl = "https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80";
+          } else if (index === 1) {
+            fallbackUrl = "https://images.unsplash.com/photo-1600322305530-45afb889e46e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80";
+          } else if (index === 2) {
+            fallbackUrl = "https://images.unsplash.com/photo-1605856449242-d3ded1336390?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80";
+          } else if (index === 3) {
+            fallbackUrl = "https://images.unsplash.com/photo-1614023054127-15d4a3e966e8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80";
+          }
+          
+          if (fallbackUrl) {
+            cardImage.style.backgroundImage = `url("${fallbackUrl}")`;
+          }
+        };
+        img.src = imageUrl;
+      }
+    }
+  });
+  
+  // Special handling for AC cleaning image - using direct HTML rather than background
+  const acCleaningCard = document.querySelector('.special-service-card:nth-child(4)');
+  if (acCleaningCard) {
+    console.log('Fixing AC cleaning image with direct img element');
+    
+    // Get the service image div
+    const acCleaningImage = acCleaningCard.querySelector('.service-image');
+    
+    if (acCleaningImage) {
+      // Remove background image styling and add an actual img element
+      acCleaningImage.style.backgroundImage = 'none';
+      acCleaningImage.style.display = 'flex';
+      acCleaningImage.style.justifyContent = 'center';
+      acCleaningImage.style.alignItems = 'center';
+      acCleaningImage.style.overflow = 'hidden';
+      
+      // Create and add img element
+      const imgElement = document.createElement('img');
+      imgElement.src = './attached_assets/ac-cleaning.jpg';
+      imgElement.alt = 'AC Cleaning Service';
+      imgElement.style.width = '100%';
+      imgElement.style.height = '100%';
+      imgElement.style.objectFit = 'cover';
+      
+      // Error handling for the image
+      imgElement.onerror = function() {
+        console.error('AC cleaning image failed to load even with direct img element');
+        this.src = 'https://images.unsplash.com/photo-1614023054127-15d4a3e966e8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80';
+      };
+      
+      // Clear and append
+      acCleaningImage.innerHTML = '';
+      acCleaningImage.appendChild(imgElement);
+      
+      console.log('AC cleaning image element created and added to DOM');
+    }
   }
 });
 
