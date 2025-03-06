@@ -1239,6 +1239,67 @@ left: 0;
   font-weight: bold;
 }
 
+/* WhatsApp floating button */
+@keyframes pulseWhatsApp {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+    transform: scale(1);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+    transform: scale(1.05);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    transform: scale(1);
+  }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25D366;
+  color: white;
+  border-radius: 50px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+  z-index: 999;
+  transition: all 0.3s ease;
+  animation: pulseWhatsApp 2s infinite;
+}
+
+.whatsapp-float:hover {
+  animation: wiggle 0.5s ease-in-out infinite;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-float i {
+  font-size: 24px;
+  animation: bounce 2s infinite;
+}
+
+.whatsapp-float-text {
+  font-weight: 500;
+  font-size: 16px;
+  background: linear-gradient(90deg, #fff, #e6ffe6, #fff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: white;
+  animation: shimmer 3s linear infinite;
+}
+
 /* Make typing animation responsive on mobile */
 @media (max-width: 767px) {
   .typing-text {
@@ -1254,6 +1315,16 @@ left: 0;
   
   .typing-container {
     width: 90%;
+  }
+  
+  .whatsapp-float {
+    padding: 8px 15px;
+    bottom: 15px;
+    right: 15px;
+  }
+  
+  .whatsapp-float-text {
+    font-size: 14px;
   }
 }
 
